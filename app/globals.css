@@ -1,0 +1,217 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 13%;
+    --primary: 207 85% 31%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 195 85% 42%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 206 12% 95%;
+    --muted-foreground: 215 10% 55%;
+    --accent: 180 100% 32%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 207 85% 31%;
+    --radius: 0.75rem;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --warning: 43 89% 38%;
+    --warning-foreground: 0 0% 98%;
+    --epoch-navy: 207 85% 31%;
+    --epoch-blue: 195 85% 42%;
+    --epoch-teal: 180 100% 32%;
+    --epoch-gray: 215 10% 55%;
+    --epoch-light: 206 12% 95%;
+  }
+
+  .dark {
+    --background: 215 28% 8%;
+    --foreground: 213 31% 91%;
+    --card: 215 28% 8%;
+    --card-foreground: 213 31% 91%;
+    --popover: 215 28% 8%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 195 85% 42%;
+    --primary-foreground: 215 28% 8%;
+    --secondary: 207 85% 31%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 215 28% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 180 100% 32%;
+    --accent-foreground: 213 31% 91%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 213 31% 91%;
+    --border: 215 28% 15%;
+    --input: 215 28% 15%;
+    --ring: 195 85% 42%;
+    --success: 142 76% 36%;
+    --success-foreground: 213 31% 91%;
+    --warning: 43 89% 38%;
+    --warning-foreground: 213 31% 91%;
+    --epoch-navy: 207 85% 31%;
+    --epoch-blue: 195 85% 42%;
+    --epoch-teal: 180 100% 32%;
+    --epoch-gray: 215 20% 65%;
+    --epoch-light: 215 28% 15%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Epoch Custom Styles */
+.epoch-gradient-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--epoch-light)) 0%, 
+    hsl(var(--background)) 50%, 
+    hsl(var(--epoch-light)) 100%);
+}
+
+.epoch-brand-gradient {
+  background: linear-gradient(135deg, 
+    hsl(var(--epoch-navy)) 0%, 
+    hsl(var(--epoch-blue)) 50%, 
+    hsl(var(--epoch-teal)) 100%);
+}
+
+.epoch-card-shadow {
+  box-shadow: 0 8px 32px rgba(28, 78, 128, 0.08);
+}
+
+.epoch-text-gradient {
+  background: linear-gradient(135deg, 
+    hsl(var(--epoch-navy)) 0%, 
+    hsl(var(--epoch-blue)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.schedula-avatar {
+  background: linear-gradient(135deg, 
+    hsl(var(--epoch-teal)) 0%, 
+    hsl(var(--epoch-blue)) 100%);
+}
+
+.epoch-button {
+  background: linear-gradient(135deg, 
+    hsl(var(--epoch-navy)) 0%, 
+    hsl(var(--epoch-blue)) 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.epoch-button:hover {
+  background: linear-gradient(135deg, 
+    hsl(var(--epoch-blue)) 0%, 
+    hsl(var(--epoch-teal)) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(28, 78, 128, 0.15);
+}
+
+/* Animation utilities */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 161, 145, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(0, 161, 145, 0.4); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Scrollbar customization */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--epoch-blue));
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--epoch-navy));
+}
+
+/* Calendar Styles */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+
+.calendar-day {
+  min-height: 120px;
+  padding: 12px;
+  border-right: 1px solid hsl(var(--border));
+  border-bottom: 1px solid hsl(var(--border));
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: hsl(var(--background));
+}
+
+.calendar-day:hover {
+  background: hsl(var(--epoch-light));
+}
+
+.calendar-day.today {
+  background: linear-gradient(135deg, 
+    hsl(var(--epoch-light)) 0%, 
+    hsl(var(--background)) 100%);
+  border: 2px solid hsl(var(--epoch-blue));
+}
+
+.calendar-day.other-month {
+  opacity: 0.4;
+  background: hsl(var(--muted));
+}
+
+.booking-item {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.2;
+  margin-bottom: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.booking-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

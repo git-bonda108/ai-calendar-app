@@ -1,0 +1,42 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+  output        = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Booking {
+  id          String        @id @default(cuid())
+  title       String
+  description String?
+  category    String? // Simple category field (e.g., "Databricks", "Azure", "AI/ML")
+  startTime   DateTime
+  endTime     DateTime
+  clientName  String?
+  clientEmail String?
+  status      BookingStatus @default(CONFIRMED)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@map("bookings")
+}
+
+model ChatConversation {
+  id        String   @id @default(cuid())
+  message   String
+  response  String
+  timestamp DateTime @default(now())
+
+  @@map("chat_conversations")
+}
+
+enum BookingStatus {
+  CONFIRMED
+  PENDING
+  CANCELLED
+  COMPLETED
+}
