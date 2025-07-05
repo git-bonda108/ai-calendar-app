@@ -163,7 +163,11 @@ const config = {
       },
       {
         "fromEnvVar": null,
-        "value": "linux-musl-arm64-openssl-3.0.x"
+        "value": "rhel-openssl-1.0.x"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -190,8 +194,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"linux-musl-arm64-openssl-3.0.x\"]\n  output        = \"./generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Booking {\n  id          String        @id @default(cuid())\n  title       String\n  description String?\n  category    String? // Simple category field (e.g., \"Databricks\", \"Azure\", \"AI/ML\")\n  startTime   DateTime\n  endTime     DateTime\n  clientName  String?\n  clientEmail String?\n  status      BookingStatus @default(CONFIRMED)\n  createdAt   DateTime      @default(now())\n  updatedAt   DateTime      @updatedAt\n\n  @@map(\"bookings\")\n}\n\nmodel ChatConversation {\n  id        String   @id @default(cuid())\n  message   String\n  response  String\n  timestamp DateTime @default(now())\n\n  @@map(\"chat_conversations\")\n}\n\nenum BookingStatus {\n  CONFIRMED\n  PENDING\n  CANCELLED\n  COMPLETED\n}\n",
-  "inlineSchemaHash": "c383b71443fd2166c5f294357880128e6663a7db5495eb7f94d05ae423cf297f",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"rhel-openssl-1.0.x\", \"rhel-openssl-3.0.x\"]\n  output        = \"./generated/client\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel Booking {\n  id          String        @id @default(cuid())\n  title       String\n  description String?\n  category    String? // Simple category field (e.g., \"Databricks\", \"Azure\", \"AI/ML\")\n  startTime   DateTime\n  endTime     DateTime\n  clientName  String?\n  clientEmail String?\n  status      BookingStatus @default(CONFIRMED)\n  createdAt   DateTime      @default(now())\n  updatedAt   DateTime      @updatedAt\n\n  @@map(\"bookings\")\n}\n\nmodel ChatConversation {\n  id        String   @id @default(cuid())\n  message   String\n  response  String\n  timestamp DateTime @default(now())\n\n  @@map(\"chat_conversations\")\n}\n\nenum BookingStatus {\n  CONFIRMED\n  PENDING\n  CANCELLED\n  COMPLETED\n}\n",
+  "inlineSchemaHash": "b83a2f9a2813c82505235afc18ea2aa7375664a8024b513d18e264c2e27789f7",
   "copyEngine": true
 }
 config.dirname = '/'
