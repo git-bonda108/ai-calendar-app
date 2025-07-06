@@ -43,6 +43,8 @@ export const CalendarView = forwardRef<{ refreshBookings: () => void }, {}>((pro
   // Combine empty cells and actual month days
   const calendarDays = [...emptyDaysAtStart, ...monthDays, ...emptyDaysAtEnd]
 
+
+
   useEffect(() => {
     fetchBookings()
   }, [currentDate])

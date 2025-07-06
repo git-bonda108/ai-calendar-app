@@ -1,8 +1,9 @@
 
+
 export const dynamic = 'force-dynamic';
 
 import { NextRequest, NextResponse } from 'next/server'
-import { PrismaClient } from '../../../prisma/generated/client'
+import { PrismaClient, Booking } from '../../../prisma/generated/client'
 import { z } from 'zod'
 
 const prisma = new PrismaClient()
@@ -46,7 +47,7 @@ export async function GET(request: NextRequest) {
     })
 
     // Convert BigInt to string for JSON serialization
-    const serializedBookings = bookings.map(booking => ({
+    const serializedBookings = bookings.map((booking: Booking) => ({
       ...booking,
       id: booking.id.toString(),
     }))
@@ -255,3 +256,4 @@ export async function POST(request: NextRequest) {
     )
   }
 }
+
